@@ -21,6 +21,14 @@ import { WorkComponent } from './work/work.component';
 import { StatusComponent } from './status/status.component';
 import { SmokingComponent } from './smoking/smoking.component';
 import { PurposeComponent } from './purpose/purpose.component';
+import { LiteracyComponent } from './literacy/literacy.component';
+import { HabitComponent } from './habit/habit.component';
+import { ReasonComponent } from './reason/reason.component';
+import { ExerciseComponent } from './exercise/exercise.component';
+import { ExpectingComponent } from './expecting/expecting.component';
+import { HobbyComponent } from './hobby/hobby.component';
+import { PetComponent } from './pet/pet.component';
+import { SingerComponent } from './singer/singer.component';
 
 @NgModule({
   imports: [
@@ -43,7 +51,7 @@ import { PurposeComponent } from './purpose/purpose.component';
     // Register a Service Worker (optional)
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  declarations: [AppComponent, WorkComponent, StatusComponent, SmokingComponent, PurposeComponent],
+  declarations: [AppComponent, WorkComponent, StatusComponent, SmokingComponent, PurposeComponent, LiteracyComponent, HabitComponent, ReasonComponent, ExerciseComponent, ExpectingComponent, HobbyComponent, PetComponent, SingerComponent],
   bootstrap: [AppComponent],
   providers: [
     {

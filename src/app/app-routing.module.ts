@@ -57,6 +57,38 @@ const routes: Routes = [
         loadChildren: () => import('./purpose/purpose.module').then(m => m.PurposeModule),
       },
       {
+        path: 'literacy',
+        loadChildren: () => import('./literacy/literacy.module').then(m => m.LiteracyModule),
+      },
+      {
+        path: 'habit',
+        loadChildren: () => import('./habit/habit.module').then(m => m.HabitModule),
+      },
+      {
+        path: 'reason',
+        loadChildren: () => import('./reason/reason.module').then(m => m.ReasonModule),
+      },
+      {
+        path: 'exercise',
+        loadChildren: () => import('./exercise/exercise.module').then(m => m.ExerciseModule),
+      },
+      {
+        path: 'expecting',
+        loadChildren: () => import('./expecting/expecting.module').then(m => m.ExpectingModule),
+      },
+      {
+        path: 'hobby',
+        loadChildren: () => import('./hobby/hobby.module').then(m => m.HobbyModule),
+      },
+      {
+        path: 'pet',
+        loadChildren: () => import('./pet/pet.module').then(m => m.PetModule),
+      },
+      {
+        path: 'singer',
+        loadChildren: () => import('./singer/singer.module').then(m => m.SingerModule),
+      },
+      {
         path: 'apps/inbox',
         loadChildren: () => import('./pages/apps/inbox/inbox.module').then(m => m.InboxModule),
       },
