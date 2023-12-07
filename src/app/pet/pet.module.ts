@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { PetRoutingModule } from './pet-routing.module';
 import { GenericNameTableModule } from '../generic-name-table/generic-name-table.module';
+import { PetComponent } from './pet.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [PetComponent],
   imports: [
     CommonModule,
     PetRoutingModule,

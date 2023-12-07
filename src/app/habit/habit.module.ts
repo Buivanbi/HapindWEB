@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { HabitRoutingModule } from './habit-routing.module';
 import { GenericNameTableModule } from '../generic-name-table/generic-name-table.module';
+import { HabitComponent } from './habit.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [HabitComponent],
   imports: [
     CommonModule,
     HabitRoutingModule,

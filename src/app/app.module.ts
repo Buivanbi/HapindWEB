@@ -51,7 +51,7 @@ import { SingerComponent } from './singer/singer.component';
     // Register a Service Worker (optional)
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  declarations: [AppComponent, WorkComponent, StatusComponent, SmokingComponent, PurposeComponent, LiteracyComponent, HabitComponent, ReasonComponent, ExerciseComponent, ExpectingComponent, HobbyComponent, PetComponent, SingerComponent],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [
     {

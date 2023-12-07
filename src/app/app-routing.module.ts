@@ -28,10 +28,15 @@ const routes: Routes = [
         loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
         pathMatch: 'full'
       },
-       {
-         path: 'family',
-         loadChildren: () => import('./family/family.module').then(m => m.FamilyModule),
-       },
+      {
+        path: 'user',
+        loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+      },
+      {
+        path: 'family',
+        loadChildren: () => import('./family/family.module').then(m => m.FamilyModule),
+      },
+
       {
         path: 'music',
         loadChildren: () => import('./music/music.module').then(m => m.MusicModule),

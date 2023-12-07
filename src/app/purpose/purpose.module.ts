@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { PurposeRoutingModule } from './purpose-routing.module';
 import { GenericNameTableModule } from '../generic-name-table/generic-name-table.module';
+import { PurposeComponent } from './purpose.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [PurposeComponent],
   imports: [
     CommonModule,
     PurposeRoutingModule,

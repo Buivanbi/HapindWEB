@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { ReasonRoutingModule } from './reason-routing.module';
 import { GenericNameTableModule } from '../generic-name-table/generic-name-table.module';
+import { ReasonComponent } from './reason.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ReasonComponent],
   imports: [
     CommonModule,
     ReasonRoutingModule,

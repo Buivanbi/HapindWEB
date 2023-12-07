@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { SingerRoutingModule } from './singer-routing.module';
 import { GenericNameTableModule } from '../generic-name-table/generic-name-table.module';
+import { SingerComponent } from './singer.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [SingerComponent],
   imports: [
     CommonModule,
     SingerRoutingModule,

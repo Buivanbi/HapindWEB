@@ -1,0 +1,48 @@
+<div mat-dialog-title>USER DETAILS</div>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <mat-dialog-content>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Full Name</mat-label>
+        <input type="text" formControlName="fullname" matInput readonly>
+      </mat-form-field>
+    </div>
+
+    <div class="person">
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex>
+          <mat-label>Email</mat-label>
+          <input type="text" formControlName="email" matInput readonly>
+        </mat-form-field>
+
+        <mat-form-field fxFlex>
+          <mat-label>Phone</mat-label>
+          <input type="text" formControlName="phone" matInput readonly>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Adress</mat-label>
+        <input type="text" formControlName="address" matInput readonly>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Gender</mat-label>
+        <input type="text" formControlName="gender" matInput readonly>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <mat-label>DOB</mat-label>
+        <input type="text" formControlName="dob" matInput readonly>
+      </mat-form-field>
+    </div>
+
+    
+  </mat-dialog-content>
+  
+</form>
