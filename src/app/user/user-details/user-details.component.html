@@ -3,6 +3,7 @@
 <form [formGroup]="form" (ngSubmit)="save()">
   <mat-dialog-content>
 
+    <!-- dai -->
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
         <mat-label>Full Name</mat-label>
@@ -10,6 +11,7 @@
       </mat-form-field>
     </div>
 
+    <!-- ngan -->
     <div class="person">
       <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
         <mat-form-field fxFlex>
@@ -24,6 +26,7 @@
       </div>
     </div>
 
+     <!-- dai -->
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
         <mat-label>Adress</mat-label>
@@ -31,6 +34,7 @@
       </mat-form-field>
     </div>
 
+     <!-- ngan -->
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
         <mat-label>Gender</mat-label>
@@ -41,6 +45,54 @@
         <input type="text" formControlName="dob" matInput readonly>
       </mat-form-field>
     </div>
+
+     <!-- ngan -->
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Family</mat-label>
+        <input type="text" formControlName="family" matInput readonly>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <mat-label>Drinking</mat-label>
+        <input type="text" formControlName="drinking" matInput readonly>
+      </mat-form-field>
+    </div>
+
+     <!-- ngan -->
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Work</mat-label>
+        <input type="text" formControlName="work" matInput readonly>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <mat-label>Smoking</mat-label>
+        <input type="text" formControlName="smoking" matInput readonly>
+      </mat-form-field>
+    </div>
+
+     <!-- ngan -->
+     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Purpose</mat-label>
+        <input type="text" formControlName="purpose" matInput readonly>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <mat-label>Literacy</mat-label>
+        <input type="text" formControlName="literacy" matInput readonly>
+      </mat-form-field>
+    </div>
+
+      <!-- ngan -->
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+        <mat-form-field fxFlex>
+          <mat-label>Habit</mat-label>
+          <input type="text" formControlName="habit" matInput readonly>
+        </mat-form-field>
+        <mat-form-field fxFlex>
+          <mat-label>Literacy</mat-label>
+          <input type="text" formControlName="literacy" matInput readonly>
+        </mat-form-field>
+      </div>
 
     
   </mat-dialog-content>

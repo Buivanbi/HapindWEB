@@ -49,6 +49,13 @@ export class UserDetailsComponent implements OnInit {
       dob: [this.defaults?.dob],
       gender: [this.defaults?.gender],
       address: [this.defaults?.address],
+      family: [this.defaults?.family],
+      drinking: [this.defaults?.drinking],
+      work: [this.defaults?.work],
+      smoking: [this.defaults?.smoking],
+      purpose: [this.defaults?.purpose],
+      literacy: [this.defaults?.literacy],
+      habit: [this.defaults?.habit],
     });
   }
 

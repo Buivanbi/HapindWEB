@@ -1,5 +1,11 @@
 import { Family } from "./family.model";
+import { Drinking } from "./drinking.model";
 import { UserMusic } from "./user-music.model";
+import { Work } from "./work.model";
+import { Smoking } from "./smoking.model";
+import { Purpose } from "./purpose.model";
+import { Literacy } from "./literacy.model";
+import { Habit } from "./habit.model";
 
 export class User {
     id: number;
@@ -10,6 +16,13 @@ export class User {
     gender: string;
     address: string;
     family: Family;
+    drinking: Drinking;
+    work: Work;
+    smoking: Smoking;
+    purpose: Purpose;
+    literacy: Literacy;
+    habit: Habit;
+
     //userMusics: UserMusic[]; 
 
     constructor(user) {
@@ -21,6 +34,12 @@ export class User {
         this.gender= user.gender;
         this.address= user.address;
         this.family= user.family.name;
+        this.drinking= user.drinking.name;
+        this.work= user.work.name;
+        this.smoking= user.smoking.name;
+        this.purpose= user.purpose.name;
+        this.literacy= user.literacy.name;
+        this.habit= user.habit.name;
         //this.userMusics = user.userMusics.music.name;
     }
 }
