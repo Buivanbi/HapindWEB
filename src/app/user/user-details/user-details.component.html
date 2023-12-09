@@ -11,6 +11,8 @@
       </mat-form-field>
     </div>
 
+
+
     <!-- ngan -->
     <div class="person">
       <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
@@ -26,7 +28,7 @@
       </div>
     </div>
 
-     <!-- dai -->
+    <!-- dai -->
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
         <mat-label>Adress</mat-label>
@@ -34,7 +36,7 @@
       </mat-form-field>
     </div>
 
-     <!-- ngan -->
+    <!-- ngan -->
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
         <mat-label>Gender</mat-label>
@@ -46,7 +48,7 @@
       </mat-form-field>
     </div>
 
-     <!-- ngan -->
+    <!-- ngan -->
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
         <mat-label>Family</mat-label>
@@ -58,7 +60,7 @@
       </mat-form-field>
     </div>
 
-     <!-- ngan -->
+    <!-- ngan -->
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
         <mat-label>Work</mat-label>
@@ -70,8 +72,8 @@
       </mat-form-field>
     </div>
 
-     <!-- ngan -->
-     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+    <!-- ngan -->
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
         <mat-label>Purpose</mat-label>
         <input type="text" formControlName="purpose" matInput readonly>
@@ -82,19 +84,48 @@
       </mat-form-field>
     </div>
 
-      <!-- ngan -->
-      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
-        <mat-form-field fxFlex>
-          <mat-label>Habit</mat-label>
-          <input type="text" formControlName="habit" matInput readonly>
-        </mat-form-field>
-        <mat-form-field fxFlex>
-          <mat-label>Literacy</mat-label>
-          <input type="text" formControlName="literacy" matInput readonly>
-        </mat-form-field>
-      </div>
+    <!-- ngan -->
+    <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+      <mat-form-field fxFlex>
+        <mat-label>Habit</mat-label>
+        <input type="text" formControlName="habit" matInput readonly>
+      </mat-form-field>
+      <mat-form-field fxFlex>
+        <mat-label>Literacy</mat-label>
+        <input type="text" formControlName="literacy" matInput readonly>
+      </mat-form-field>
+    </div>
 
-    
+    <mat-label>Music</mat-label>
+    <mat-chip-set aria-label="Music selection">
+      <mat-chip *ngFor="let music of musicList" max-width="200px">{{ music.music.name }}</mat-chip>
+    </mat-chip-set>
+
+    <mat-label>Singer</mat-label>
+    <mat-chip-set aria-label="Singer selection">
+      <mat-chip *ngFor="let singer of singerList" max-width="200px">{{ singer.singer.name }}</mat-chip>
+    </mat-chip-set>
+
+    <mat-label>Pet</mat-label>
+    <mat-chip-set aria-label="Pet selection">
+      <mat-chip *ngFor="let pet of petList" max-width="200px">{{ pet.pet.name }}</mat-chip>
+    </mat-chip-set>
+
+    <mat-label>Language</mat-label>
+    <mat-chip-set aria-label="Language selection">
+      <mat-chip *ngFor="let language of languageList" max-width="200px">{{ language.language.name }}</mat-chip>
+    </mat-chip-set>
+
+    <mat-label>Hobby</mat-label>
+    <mat-chip-set aria-label="Hobby selection">
+      <mat-chip *ngFor="let hobby of hobbyList" max-width="200px">{{ hobby.hobby.name }}</mat-chip>
+    </mat-chip-set>
+
+    <mat-label>Exercise</mat-label>
+    <mat-chip-set aria-label="Exercise selection">
+      <mat-chip *ngFor="let exercise of exerciseList" max-width="200px">{{ exercise.exercise.name }}</mat-chip>
+    </mat-chip-set>
+
   </mat-dialog-content>
-  
+
 </form>

@@ -3,7 +3,16 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from 'src/@fury/animations/fade-in-up.animation';
-import { User } from './user.model';
+import { User } from 'src/app/model/user.model';
+
+import { UserService } from '../user.service';
+import { UserMusic } from 'src/app/model/user-music.model';
+import { UserSinger } from 'src/app/model/user-singer.model';
+import { UserPet } from 'src/app/model/user-pet.model';
+import { UserLanguage } from 'src/app/model/user-language.model';
+import { UserHobby } from 'src/app/model/user-hobby.model';
+import { UserExpecting } from 'src/app/model/user-expecting.model';
+import { UserExercise } from 'src/app/model/user-exercise.model';
 
 @Component({
   selector: 'fury-user-details',
@@ -17,10 +26,17 @@ export class UserDetailsComponent implements OnInit {
 
   form: UntypedFormGroup;
   mode: 'create' | 'update' = 'create';
+  musicList: UserMusic[];
+  singerList: UserSinger[];
+  petList: UserPet[];
+  languageList: UserLanguage[];
+  hobbyList: UserHobby[];
+  expectingList :UserExpecting[];
+  exerciseList: UserExercise[];
 
   constructor(@Inject(MAT_DIALOG_DATA) public defaults: any,
               private dialogRef: MatDialogRef<UserDetailsComponent>,
-              private fb: UntypedFormBuilder) {
+              private fb: UntypedFormBuilder, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -56,6 +72,55 @@ export class UserDetailsComponent implements OnInit {
       purpose: [this.defaults?.purpose],
       literacy: [this.defaults?.literacy],
       habit: [this.defaults?.habit],
+      musicList:[],
+      singerList:[],
+      petList:[],
+      languageList:[],
+      hobbyList:[],
+      expectingList:[],
+      exerciseList:[],
+    });
+
+    //music
+    this.userService.findMusicById(this.defaults?.id).subscribe((musicList) => {
+      // Assuming musicList is an array property in the User object
+      this.musicList = musicList
+    });
+
+    //singer
+    this.userService.findSingerById(this.defaults?.id).subscribe((singerList) => {
+      // Assuming musicList is an array property in the User object
+      this.singerList = singerList
+    });
+
+    //pet
+    this.userService.findPetById(this.defaults?.id).subscribe((petList) => {
+      // Assuming musicList is an array property in the User object
+      this.petList = petList
+    });
+
+     //Language
+     this.userService.findLanguageById(this.defaults?.id).subscribe((languageList) => {
+      // Assuming musicList is an array property in the User object
+      this.languageList = languageList
+    });
+
+     //Hobby
+     this.userService.findHobbyById(this.defaults?.id).subscribe((hobbyList) => {
+      // Assuming musicList is an array property in the User object
+      this.hobbyList = hobbyList
+    });
+
+    //Expecting
+    this.userService.findExerciseById(this.defaults?.id).subscribe((exerciseList) => {
+      // Assuming musicList is an array property in the User object
+      this.exerciseList = exerciseList
+    });
+
+    //Exercise
+    this.userService.findExpectingById(this.defaults?.id).subscribe((expectingList) => {
+      // Assuming musicList is an array property in the User object
+      this.expectingList = expectingList
     });
   }
 

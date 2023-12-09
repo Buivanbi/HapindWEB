@@ -1,11 +1,11 @@
-import { Family } from "./family.model";
-import { Drinking } from "./drinking.model";
+import { Family } from "src/app/model/family.model";
+import { Drinking } from "src/app/model/drinking.model";
 import { UserMusic } from "./user-music.model";
-import { Work } from "./work.model";
-import { Smoking } from "./smoking.model";
-import { Purpose } from "./purpose.model";
-import { Literacy } from "./literacy.model";
-import { Habit } from "./habit.model";
+import { Work } from "src/app/model/work.model";
+import { Smoking } from "src/app/model/smoking.model";
+import { Purpose } from "src/app/model/purpose.model";
+import { Literacy } from "src/app/model/literacy.model";
+import { Habit } from "src/app/model/habit.model";
 
 export class User {
     id: number;

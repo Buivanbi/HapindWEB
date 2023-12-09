@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from './user-details/user.model';
+import { User } from '../model/user.model';
 import { FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserMusic } from '../model/user-music.model';
+import { UserSinger } from '../model/user-singer.model';
+import { UserPet } from '../model/user-pet.model';
+import { UserLanguage } from '../model/user-language.model';
+import { UserHobby } from '../model/user-hobby.model';
+import { UserExpecting } from '../model/user-expecting.model';
+import { UserExercise } from '../model/user-exercise.model';
 
 @Injectable({
   providedIn: 'root'
@@ -112,5 +119,179 @@ export class UserService {
   //   }
   //   return throwError('Something bad happened; please try again later.');
   // }
+
+  findMusicById(id: number, populate: string[] | null = null): Observable<UserMusic[]> {
+    let url = `${this.config}/userMusic/music/${id}`;
+  
+    if (populate) {
+      url += `?populate=${populate.join(', ')}`;
+    }
+  
+    return this.httpClient.get(url).pipe(
+      map((res: any) => {
+        if (res.error) {
+          throw new Error(res.error);
+        } else {
+          // Assuming res is an array of UserMusic objects
+          return res.map((userMusic: any) => this.mapMusicModel(userMusic));
+        }
+      })
+    );
+  }
+  
+
+  mapMusicModel(model: any): UserMusic {
+    return new UserMusic(model); // Adjust this based on your Music model constructor
+  }
+
+  // Singer
+  findSingerById(id: number, populate: string[] | null = null): Observable<UserSinger[]> {
+    let url = `${this.config}/userSinger/singer/${id}`;
+  
+    if (populate) {
+      url += `?populate=${populate.join(', ')}`;
+    }
+  
+    return this.httpClient.get(url).pipe(
+      map((res: any) => {
+        if (res.error) {
+          throw new Error(res.error);
+        } else {
+          // Assuming res is an array of UserMusic objects
+          return res.map((userSinger: any) => this.mapSingerModel(userSinger));
+        }
+      })
+    );
+  }
+  
+
+  mapSingerModel(model: any): UserSinger {
+    return new UserSinger(model); // Adjust this based on your Music model constructor
+  }
+
+  //Pet
+  findPetById(id: number, populate: string[] | null = null): Observable<UserPet[]> {
+    let url = `${this.config}/userPet/pet/${id}`;
+  
+    if (populate) {
+      url += `?populate=${populate.join(', ')}`;
+    }
+  
+    return this.httpClient.get(url).pipe(
+      map((res: any) => {
+        if (res.error) {
+          throw new Error(res.error);
+        } else {
+          // Assuming res is an array of UserMusic objects
+          return res.map((userPet: any) => this.mapPetModel(userPet));
+        }
+      })
+    );
+  }
+  
+
+  mapPetModel(model: any): UserPet {
+    return new UserPet(model); // Adjust this based on your Music model constructor
+  }
+
+  //Language
+  findLanguageById(id: number, populate: string[] | null = null): Observable<UserLanguage[]> {
+    let url = `${this.config}/userLanguage/language/${id}`;
+  
+    if (populate) {
+      url += `?populate=${populate.join(', ')}`;
+    }
+  
+    return this.httpClient.get(url).pipe(
+      map((res: any) => {
+        if (res.error) {
+          throw new Error(res.error);
+        } else {
+          // Assuming res is an array of UserMusic objects
+          return res.map((userLanguage: any) => this.mapLanguageModel(userLanguage));
+        }
+      })
+    );
+  }
+  
+
+  mapLanguageModel(model: any): UserLanguage {
+    return new UserLanguage(model); // Adjust this based on your Language model constructor
+  }
+
+  //Hobby
+  findHobbyById(id: number, populate: string[] | null = null): Observable<UserHobby[]> {
+    let url = `${this.config}/userHobby/hobby/${id}`;
+  
+    if (populate) {
+      url += `?populate=${populate.join(', ')}`;
+    }
+  
+    return this.httpClient.get(url).pipe(
+      map((res: any) => {
+        if (res.error) {
+          throw new Error(res.error);
+        } else {
+          // Assuming res is an array of UserMusic objects
+          return res.map((userHobby: any) => this.mapHobbyModel(userHobby));
+        }
+      })
+    );
+  }
+  
+
+  mapHobbyModel(model: any): UserHobby {
+    return new UserHobby(model); // Adjust this based on your Language model constructor
+  }
+
+  //Expecting
+  findExpectingById(id: number, populate: string[] | null = null): Observable<UserExpecting[]> {
+    let url = `${this.config}/userExpecting/expecting/${id}`;
+  
+    if (populate) {
+      url += `?populate=${populate.join(', ')}`;
+    }
+  
+    return this.httpClient.get(url).pipe(
+      map((res: any) => {
+        if (res.error) {
+          throw new Error(res.error);
+        } else {
+          // Assuming res is an array of UserMusic objects
+          return res.map((userExpecting: any) => this.mapExpectingModel(userExpecting));
+        }
+      })
+    );
+  }
+  
+
+  mapExpectingModel(model: any): UserExpecting {
+    return new UserExpecting(model); // Adjust this based on your Language model constructor
+  }
+
+   //Exercise
+   findExerciseById(id: number, populate: string[] | null = null): Observable<UserExercise[]> {
+    let url = `${this.config}/userExercise/exercise/${id}`;
+  
+    if (populate) {
+      url += `?populate=${populate.join(', ')}`;
+    }
+  
+    return this.httpClient.get(url).pipe(
+      map((res: any) => {
+        if (res.error) {
+          throw new Error(res.error);
+        } else {
+          // Assuming res is an array of UserMusic objects
+          return res.map((UserExercise: any) => this.mapExerciseModel(UserExercise));
+        }
+      })
+    );
+  }
+  
+
+  mapExerciseModel(model: any): UserExercise {
+    return new UserExercise(model); // Adjust this based on your Language model constructor
+  }
 
 }

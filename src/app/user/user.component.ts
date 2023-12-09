@@ -7,7 +7,7 @@ import { Observable, of, ReplaySubject } from 'rxjs';
 
 import { ListColumn } from 'src/@fury/shared/list/list-column.model';
 
-import { User } from './user-details/user.model';
+import { User } from '../model/user.model';
 import { fadeInRightAnimation } from 'src/@fury/animations/fade-in-right.animation';
 import { fadeInUpAnimation } from 'src/@fury/animations/fade-in-up.animation';
 import { NavigationEnd, Router } from '@angular/router';
