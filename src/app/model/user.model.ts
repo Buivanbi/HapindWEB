@@ -6,6 +6,8 @@ import { Smoking } from "src/app/model/smoking.model";
 import { Purpose } from "src/app/model/purpose.model";
 import { Literacy } from "src/app/model/literacy.model";
 import { Habit } from "src/app/model/habit.model";
+import { Status } from "./status.model";
+
 
 export class User {
     id: number;
@@ -22,6 +24,7 @@ export class User {
     purpose: Purpose;
     literacy: Literacy;
     habit: Habit;
+    status: Status;
 
     //userMusics: UserMusic[]; 
 
@@ -40,6 +43,7 @@ export class User {
         this.purpose= user.purpose.name;
         this.literacy= user.literacy.name;
         this.habit= user.habit.name;
+        this.status= user.status.name;
         //this.userMusics = user.userMusics.music.name;
     }
 }

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { AuthService } from './auth/auth.service';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { RoleGuardService } from './auth/role-guard.service';
 
 const routes: Routes = [
   {
@@ -22,15 +25,20 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [AuthGuardService],
     children: [
       {
-        path: '',
+        path: 'dashboard',
         loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule),
         pathMatch: 'full'
       },
       {
         path: 'user',
         loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+        canActivate: [RoleGuardService],
+        data: {
+          expectedRole: 'admin'
+        }
       },
       {
         path: 'family',
@@ -145,6 +153,7 @@ const routes: Routes = [
         path: 'level1/level2/level3/level4/level5',
         loadChildren: () => import('./pages/level5/level5.module').then(m => m.Level5Module),
       },
+      { path: '**', loadChildren: () => import('./pages/blank/blank.module').then(m => m.BlankModule), }
     ]
   }
 ];

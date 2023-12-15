@@ -72,6 +72,7 @@ export class UserDetailsComponent implements OnInit {
       purpose: [this.defaults?.purpose],
       literacy: [this.defaults?.literacy],
       habit: [this.defaults?.habit],
+      status: [this.defaults?.status],
       musicList:[],
       singerList:[],
       petList:[],
@@ -151,4 +152,5 @@ export class UserDetailsComponent implements OnInit {
   isUpdateMode() {
     return this.mode === 'update';
   }
+
 }

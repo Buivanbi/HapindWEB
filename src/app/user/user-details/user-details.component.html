@@ -91,8 +91,8 @@
         <input type="text" formControlName="habit" matInput readonly>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <mat-label>Literacy</mat-label>
-        <input type="text" formControlName="literacy" matInput readonly>
+        <mat-label>Status</mat-label>
+        <input type="text" formControlName="status" matInput readonly>
       </mat-form-field>
     </div>
 
@@ -127,5 +127,12 @@
     </mat-chip-set>
 
   </mat-dialog-content>
+
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button *ngIf="isUpdateMode()" mat-flat-button color="primary" [disabled]="!form.valid">Banned 
+    </button>
+</mat-dialog-actions>
+
+  
 
 </form>

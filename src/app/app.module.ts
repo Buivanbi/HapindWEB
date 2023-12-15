@@ -29,6 +29,10 @@ import { ExpectingComponent } from './expecting/expecting.component';
 import { HobbyComponent } from './hobby/hobby.component';
 import { PetComponent } from './pet/pet.component';
 import { SingerComponent } from './singer/singer.component';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { LoginComponent } from './pages/authentication/login/login.component';
+import { LoginModule } from './pages/authentication/login/login.module';
 
 @NgModule({
   imports: [
@@ -48,12 +52,16 @@ import { SingerComponent } from './singer/singer.component';
     GenericNameTableModule,
     // Displays Loading Bar when a Route Request or HTTP Request is pending
     PendingInterceptorModule,
+    LoginModule
     // Register a Service Worker (optional)
     // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [
+    AuthGuardService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: {

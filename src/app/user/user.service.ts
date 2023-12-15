@@ -11,6 +11,7 @@ import { UserLanguage } from '../model/user-language.model';
 import { UserHobby } from '../model/user-hobby.model';
 import { UserExpecting } from '../model/user-expecting.model';
 import { UserExercise } from '../model/user-exercise.model';
+import { Status } from '../model/status.model';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,23 @@ export class UserService {
       })
     );
   }
+ 
+  bannedUser(id: number, user: User, status: Status): Observable<User> {
+    const url = `${this.config}/${this.modelName}/${id}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+  
+    // Assuming 'status' is a property in the User model
+    const updatedUser: User = { ...user, status: status };
+  
+    return this.httpClient.put<User>(url, updatedUser, { headers });
+  }
+  
+  
+  
+
   create(model: User): Observable<User> {
     const url = `${this.config}/${this.modelName}`;
     const headers = new HttpHeaders({
