@@ -35,10 +35,10 @@ const routes: Routes = [
       {
         path: 'user',
         loadChildren: () => import('./user/user.module').then(m => m.UserModule),
-        canActivate: [RoleGuardService],
-        data: {
-          expectedRole: 'admin'
-        }
+        // canActivate: [RoleGuardService],
+        // data: {
+        //   expectedRole: 'admin'
+        // }
       },
       {
         path: 'family',

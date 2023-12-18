@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.authenticateUser(username, password).subscribe(
       response => {
-        this.router.navigate(['']);
+        this.router.navigate(['','dashboard']);
         
 
         // Handle successful authentication here

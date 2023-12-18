@@ -6,7 +6,7 @@
     <fury-page-layout-content [@fadeInUp]>
         <fury-list name="User"  [columns]="columns" (filterChange)="onFilterChange($event)">
             <div class="actions">
-                <button class="create" (click)="createUser()" type="button" mat-mini-fab color="primary">
+                <button class="create" (click)="createNotification()" type="button" mat-mini-fab color="primary">
                     <mat-icon>add</mat-icon>
                 </button>
             </div>
@@ -46,18 +46,18 @@
                         </button>
 
                         <mat-menu #actionsMenu="matMenu" yPosition="below" xPosition="before">
-                            <button (click)="bannedUser(row)" mat-menu-item>
+                            <button (click)="updateUser(row)" mat-menu-item>
                                 <span>Banned</span>
                             </button>
-                            <button (click)="deleteUser(row)" mat-menu-item>
+                            <!-- <button (click)="deleteUser(row)" mat-menu-item>
                                 <span>Delete</span>
-                            </button>
+                            </button> -->
                         </mat-menu>
                     </td>
                 </ng-container>
 
                 <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
-                <tr (click)="bannedUser(row)" *matRowDef="let row; columns: visibleColumns;"
+                <tr (click)="updateUser(row)" *matRowDef="let row; columns: visibleColumns;"
                     class="clickable route-animations-elements" mat-row></tr>
             </table>
 

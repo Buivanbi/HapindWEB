@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Table } from './generic-name-table-create-update/generic-name-table.model';
 import { FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,21 +12,29 @@ export class GenericNameTableService {
   form: FormGroup;
   config = 'http://localhost:2203/api';
   modelName: string;
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private authService: AuthService) { }
 
   mapModel(model: any): Table {
     return new Table(model);
   }
 
-  findAll(populate: string[] | null = null):
-    Observable<Table[]> {
+  private getHeaders(): HttpHeaders {
+    const token = this.authService.getToken();
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
+  findAll(populate: string[] | null = null): Observable<Table[]> {
     let url = `${this.config}/${this.modelName}`;
 
     if (populate) {
       url += `?populate=${populate.join(', ')}`;
     }
 
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -43,7 +52,7 @@ export class GenericNameTableService {
       url += `?populate=${populate.join(', ')}`;
     }
 
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -56,11 +65,7 @@ export class GenericNameTableService {
 
   upsert(id: number, model: Table): Observable<Table> {
     const url = `${this.config}/${this.modelName}/${id}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    });
-    return this.httpClient.put(url, JSON.stringify(model), { headers }).pipe(
+    return this.httpClient.put(url, JSON.stringify(model), { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -70,14 +75,10 @@ export class GenericNameTableService {
       })
     );
   }
+
   create(model: Table): Observable<Table> {
     const url = `${this.config}/${this.modelName}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    });
-
-    return this.httpClient.post(url, JSON.stringify(model), { headers }).pipe(
+    return this.httpClient.post(url, JSON.stringify(model), { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -90,7 +91,7 @@ export class GenericNameTableService {
   
   deleteById(id: number): Observable<void> {
     const url = `${this.config}/${this.modelName}/${id}`;
-    return this.httpClient.delete(url).pipe(
+    return this.httpClient.delete(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res && res.error) {
           throw new Error(res.error);

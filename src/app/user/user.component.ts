@@ -15,6 +15,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { Status } from '../model/status.model';
+import { SendNotificationComponent } from './user-details/send-notification.component';
 
 @Component({
   selector: 'fury-user',
@@ -39,8 +40,6 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
     { name: 'Phone', property: 'phone', visible: true, isModelProperty: true },
     { name: 'DOB', property: 'dob', visible: true, isModelProperty: true },
     { name: 'Gender', property: 'gender', visible: true, isModelProperty: true },
-    { name: 'Family', property: 'family', visible: false, isModelProperty: true },
-    { name: 'Music', property: 'userMusics', visible: false, isModelProperty: true },
     { name: 'Address', property: 'address', visible: true, isModelProperty: true },
     { name: 'Status', property: 'status', visible: true, isModelProperty: true },
     { name: 'Actions', property: 'actions', visible: true },
@@ -107,8 +106,8 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   
 
-  createUser() {
-    this.dialog.open(UserDetailsComponent).afterClosed().subscribe((user: User) => {
+  createNotification() {
+    this.dialog.open(SendNotificationComponent).afterClosed().subscribe((user: User) => {
       if (user) {
         this.userService.create(user).subscribe((createUser) => {
           this.users.unshift(createUser);
@@ -135,38 +134,6 @@ export class UserComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     });
   }
-
-  // bannedUser(user) {
-  //   this.userService.findById(user.id).subscribe((currentUser: User) => {
-  //     const dialogRef = this.dialog.open(UserDetailsComponent, { data: currentUser });
-  
-  //     dialogRef.afterClosed().subscribe((selectedStatus: Status) => {
-  //       if (selectedStatus) {
-  //         // Assuming your userService has a method for banning users
-  //         this.userService.bannedUser(user.id, currentUser, selectedStatus).subscribe((bannedUser: User) => {
-  //           const index = this.users.findIndex(existingUser => existingUser.id === bannedUser.id);
-  //           if (index !== -1) {
-  //             this.users[index] = bannedUser;
-  //             this.dataSource.data = [...this.users];
-  //           }
-  //         });
-  //       }
-  //     });
-  //   });
-  // }
-  bannedUser(user) {
-    this.userService.findById(user.id).subscribe((currentUser: User) => {
-      // Assuming your userService has a method for banning users
-      this.userService.bannedUser(user.id, currentUser,currentUser.status).subscribe((bannedUser: User) => {
-        const index = this.users.findIndex(existingUser => existingUser.id === bannedUser.id);
-        if (index !== -1) {
-          this.users[index] = bannedUser;
-          this.dataSource.data = [...this.users];
-        }
-      });
-    });
-  }
-  
 
    deleteUser(user) {
     this.userService.deleteById(user.id).subscribe(() => {

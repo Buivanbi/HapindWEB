@@ -12,6 +12,7 @@ import { UserHobby } from '../model/user-hobby.model';
 import { UserExpecting } from '../model/user-expecting.model';
 import { UserExercise } from '../model/user-exercise.model';
 import { Status } from '../model/status.model';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,21 +21,29 @@ export class UserService {
   form: FormGroup;
   config = 'http://localhost:2203/api';
   modelName= 'user';
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,private authService: AuthService) { }
 
   mapModel(model: any): User {
     return new User(model);
   }
 
-  findAll(populate: string[] | null = null):
-    Observable<User[]> {
+  private getHeaders(): HttpHeaders {
+    const token = this.authService.getToken();
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
+  findAll(populate: string[] | null = null): Observable<User[]> {
     let url = `${this.config}/${this.modelName}`;
 
     if (populate) {
       url += `?populate=${populate.join(', ')}`;
     }
 
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -52,7 +61,7 @@ export class UserService {
       url += `?populate=${populate.join(', ')}`;
     }
 
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -65,11 +74,7 @@ export class UserService {
 
   upsert(id: number, model: User): Observable<User> {
     const url = `${this.config}/${this.modelName}/${id}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    });
-    return this.httpClient.put(url, JSON.stringify(model), { headers }).pipe(
+    return this.httpClient.put(url, JSON.stringify(model), { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -79,31 +84,10 @@ export class UserService {
       })
     );
   }
- 
-  bannedUser(id: number, user: User, status: Status): Observable<User> {
-    const url = `${this.config}/${this.modelName}/${id}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    });
-  
-    // Assuming 'status' is a property in the User model
-    const updatedUser: User = { ...user, status: status };
-  
-    return this.httpClient.put<User>(url, updatedUser, { headers });
-  }
-  
-  
-  
 
   create(model: User): Observable<User> {
     const url = `${this.config}/${this.modelName}`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    });
-
-    return this.httpClient.post(url, JSON.stringify(model), { headers }).pipe(
+    return this.httpClient.post(url, JSON.stringify(model), { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -116,7 +100,7 @@ export class UserService {
   
   deleteById(id: number): Observable<void> {
     const url = `${this.config}/${this.modelName}/${id}`;
-    return this.httpClient.delete(url).pipe(
+    return this.httpClient.delete(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res && res.error) {
           throw new Error(res.error);
@@ -129,6 +113,7 @@ export class UserService {
     return list.map((item) => this.mapModel(item));
   }
 
+  
   // private handleError(error: HttpErrorResponse): Observable<Family> {
   //   if (error.error instanceof ErrorEvent) {
   //     console.error('An error occurred:', error.error.message);
@@ -145,7 +130,7 @@ export class UserService {
       url += `?populate=${populate.join(', ')}`;
     }
   
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -170,7 +155,7 @@ export class UserService {
       url += `?populate=${populate.join(', ')}`;
     }
   
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -195,7 +180,7 @@ export class UserService {
       url += `?populate=${populate.join(', ')}`;
     }
   
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -220,7 +205,7 @@ export class UserService {
       url += `?populate=${populate.join(', ')}`;
     }
   
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -245,7 +230,7 @@ export class UserService {
       url += `?populate=${populate.join(', ')}`;
     }
   
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -270,7 +255,7 @@ export class UserService {
       url += `?populate=${populate.join(', ')}`;
     }
   
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
@@ -295,7 +280,7 @@ export class UserService {
       url += `?populate=${populate.join(', ')}`;
     }
   
-    return this.httpClient.get(url).pipe(
+    return this.httpClient.get(url, { headers: this.getHeaders() }).pipe(
       map((res: any) => {
         if (res.error) {
           throw new Error(res.error);
